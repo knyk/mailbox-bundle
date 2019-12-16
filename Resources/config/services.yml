@@ -1,0 +1,5 @@
+services:
+    Knyk\MailboxBundle\Factory\MailboxFactory:
+        class: Knyk\MailboxBundle\Factory\MailboxFactory
+        arguments: ["%knyk.mailbox.connections%"]
+        public: true

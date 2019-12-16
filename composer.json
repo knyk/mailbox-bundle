@@ -1,0 +1,25 @@
+{
+    "name": "knyk/mailbox-bundle",
+    "type": "symfony-bundle",
+    "description": "PhpImap\\Mailbox Symfony integration.",
+    "keywords": ["imap", "mailbox", "php-imap", "symfony", "bundle"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Kamil Falgowski",
+            "email": "kamfalg@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "symfony/framework-bundle": "~3.0|~4.0|~5.0",
+        "symfony/dependency-injection": "~3.0|~4.0|~5.0",
+        "php-imap/php-imap": "~2.0|~3.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16"
+    },
+    "autoload": {
+        "psr-4": { "Knyk\\MailboxBundle\\": "" }
+    }
+}
