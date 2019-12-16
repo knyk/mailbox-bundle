@@ -8,7 +8,7 @@ Simple [php-imap](https://github.com/barbushin/php-imap) integration for Symfony
 From the command line run
 
 ```
-$ composer require knyk/imap-bundle
+$ composer require knyk/mailbox-bundle
 ```
 
 If you're using Symfony Flex you're done and you can go to the configuration section otherwise you must manually register this bundle.
@@ -35,12 +35,12 @@ class AppKernel extends Kernel
 ## Configuration
 
 Setup your mailbox configuration. If your are using symfony 3.x without Symfony Flex add your configuration in `app/config/config.yml`.
-If you're using Symfony Flex open the `config/packages/knyk_imap.yaml` and adjust its content.
+If you're using Symfony Flex open the `config/packages/knyk_mailbox.yaml` and adjust its content.
 
 Here is the example configuration:
 
 ```yaml
-knyk_imap:
+mailbox:
     connections:
         example_connection:
             mailbox: "{localhost:993/imap/ssl/novalidate-cert}INBOX"
@@ -69,10 +69,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class IndexController extends AbstractController
 {
-    public function indexAction(MailboxFactory $mailbox)
+    public function indexAction(MailboxFactory $mailboxFactory)
     {
-        $exampleConnection = $mailbox->get('example_connection');
-        $anotherConnection = $mailbox->get('another_connection');
+        $exampleConnection = $mailboxFactory->create('example_connection');
+        $anotherConnection = $mailboxFactory->create('another_connection');
 
         ...
     }
@@ -96,8 +96,8 @@ class IndexController extends Controller
 {
     public function indexAction()
     {
-        $exampleConnection = $this->get('knyk.imap')->get('example_connection');
-        $anotherConnection = $this->get('knyk.imap')->get('another_connection');
+        $exampleConnection = $this->get('Knyk\MailboxBundle\Factory\MailboxFactory')->create('example_connection');
+        $anotherConnection = $this->get('Knyk\MailboxBundle\Factory\MailboxFactory')->create('another_connection');
 
         ...
     }
@@ -111,6 +111,6 @@ From this point you can use any of the methods provided by the [php-imap](https:
 
 
 ```php
-$exampleConnection = $this->get('knyk.imap')->get('example_connection');
+$exampleConnection = $this->get('Knyk\MailboxBundle\Factory\MailboxFactory')->create('example_connection');
 $exampleConnection->getMailboxInfo();
 ```
