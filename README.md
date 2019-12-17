@@ -114,3 +114,11 @@ From this point you can use any of the methods provided by the [php-imap](https:
 $exampleConnection = $this->get('Knyk\MailboxBundle\Factory\MailboxFactory')->create('example_connection');
 $exampleConnection->getMailboxInfo();
 ```
+
+## Testing
+
+Bundle can be tested by runing PHPUnit and phpspec tests.
+
+`php vendor/bin/phpspec run` - to run phpspec
+
+`php vendor/bin/phpunit tests` - to run phpunit

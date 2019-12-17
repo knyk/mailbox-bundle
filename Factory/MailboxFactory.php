@@ -35,7 +35,7 @@ class MailboxFactory implements MailboxFactoryInterface
     protected function getMailbox(string $name): Mailbox
     {
         if (!isset($this->connections[$name])) {
-            throw new \Exception(sprintf('Mailbox connection %s is not configured.', $name));
+            throw new \Exception(sprintf('Mailbox connection "%s" is not configured.', $name));
         }
 
         $config = $this->connections[$name];
@@ -56,15 +56,15 @@ class MailboxFactory implements MailboxFactoryInterface
     protected function guardAttachmentDirectory(string $directoryPath): void
     {
         if (!file_exists($directoryPath)) {
-            throw new \Exception('Directory "%s" does not exist.', $directoryPath);
+            throw new \Exception(sprintf('Directory "%s" does not exist.', $directoryPath));
         }
 
         if (!is_dir($directoryPath)) {
-            throw new \Exception(sprintf('File "%s" exists but it is not a directory', $directoryPath));
+            throw new \Exception(sprintf('File "%s" exists but it is not a directory.', $directoryPath));
         }
 
         if (!is_readable($directoryPath) || !is_writable($directoryPath)) {
-            throw new \Exception(sprintf('Directory "%s" does not have expected access permissions', $directoryPath));
+            throw new \Exception(sprintf('Directory "%s" does not have expected access permissions.', $directoryPath));
         }
     }
 }
