@@ -121,4 +121,4 @@ Bundle can be tested by runing PHPUnit and phpspec tests.
 
 `php vendor/bin/phpspec run` - to run phpspec
 
-`php vendor/bin/phpunit tests` - to run phpunit
+`php vendor/bin/phpunit tests/` - to run phpunit
