@@ -56,6 +56,15 @@ mailbox:
 ```
 
 ## Usage
+#### Connections
+All connections from your configuration will be accessible by injecting service like that:
+```yaml
+App\YourService:
+  arguments:
+    $mailbox: '@knyk.mailbox.connection.example_connection'
+```
+
+
 #### With autowiring
 In your controller:
 
