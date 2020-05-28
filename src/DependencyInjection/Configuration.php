@@ -13,9 +13,12 @@ final class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder('mailbox');
 
-        if (\method_exists($treeBuilder, 'getRootNode')) {
+        if (method_exists($treeBuilder, 'getRootNode')) {
             $rootNode = $treeBuilder->getRootNode();
         } else {
+            if (!method_exists($treeBuilder, 'root')) {
+                throw new \Exception('Method TreeBuilder::root not found. You are using not supported version of Symfony framework.');
+            }
             // BC layer for symfony/config 4.1 and older
             $rootNode = $treeBuilder->root('mailbox');
         }

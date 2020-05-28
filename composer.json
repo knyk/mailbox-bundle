@@ -19,10 +19,11 @@
     "require-dev": {
         "friendsofphp/php-cs-fixer": "^2.16",
         "phpspec/phpspec": "^6.1",
-        "phpunit/phpunit": "^8.5"
+        "phpunit/phpunit": "^8.5",
+        "phpstan/phpstan": "^0.12"
     },
     "autoload": {
-        "psr-4": { "Knyk\\MailboxBundle\\": "" }
+        "psr-4": { "Knyk\\MailboxBundle\\": "src/" }
     },
     "autoload-dev": {
         "psr-4": {
